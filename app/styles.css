@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --text-base: #afb6c2;
+    --text-title: #d4ccb6;
+    --background: #191816;
+    --income: #00a67d;
+    --expense: #f22c3d;
+    --form-background: #24221f;
+    --primary-color: #ffc632;
+   }
+
+
+  body, input, textarea, button{
+    font: 400 1rem 'poppins', sans-serif;
+    background: var(--background);
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  header {
+   background: var(--background);
+   justify-content: center;
+  }
+
+  header h1 {
+    padding: 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  #home {
+    background-color: var(--background);
+  }
+
+  #inputs {
+    margin: 1rem 2rem;
+    background: var(--form-background);
+  }
+
+  #inputsValues {
+    color: var(--text-base);
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  input {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    
+  }
+
+  .inc {
+    border: none;
+  }
+
+  .exp {
+    border: none;
+  }
+
+   #inc {
+    height: 2rem;
+    margin-left: 10px;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: var(--income);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  #exp {
+    height: 2rem;
+    margin-left: 10px;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: var(--expense);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  #showInputs {
+    padding: 2rem;
+  }
+  
+
+  .expense {
+    color: var(--expense);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .income {
+    color: var(--income);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #results {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  
+  
+ 
+  
+  #result {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  

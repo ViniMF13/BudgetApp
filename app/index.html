@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Budget App</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+    <header>
+        <h1>Budget App</h1>
+    </header>
+
+    <section id="home">
+        <div id="inputs">
+            <div id="inputsValues">
+                <h2>Income</h2>
+                <div id="income" class="flex">
+                    <input type="string" id="incomeName" class="inc" placeholder="Name">
+                    <input type="number" id="incomeValue" class="inc" placeholder="R$">
+                    <button id="inc" class="flex">add</button>
+                </div>
+                <h2 for="expenses">Expense</h2>
+                <div id="expenses" class="flex">
+                    <input type="string" id="expenseName" class="exp" placeholder="Name">
+                    <input type="number" id="expenseValue" class="exp" placeholder="R$">
+                    <button id="exp" class="flex">add</button>
+                </div>
+            </div>
+                
+            <div id="showInputs">
+
+            </div>
+        </div>
+    </section>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
