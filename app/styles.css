@@ -66,9 +66,32 @@ body {
     border: none;
   }
 
+  .inc:focus {
+    outline: none;
+    border: 1px solid var(--income);
+    }
+
+    /* remove number input style */
+    .inc::-webkit-outer-spin-button,
+    .inc::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+    }
+
   .exp {
     border: none;
   }
+
+  .exp:focus {
+    outline: none;
+    border: 1px solid var(--expense);
+    }
+
+    .exp::-webkit-outer-spin-button,
+    .exp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+    }
 
    #inc {
     height: 2rem;
@@ -96,7 +119,7 @@ body {
     align-items: center;
   }
   
-  #showInputs {
+  #inputsList {
     padding: 2rem;
   }
   

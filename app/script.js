@@ -4,37 +4,62 @@ const resultDiv = document.getElementById("result");
 const addIncome = document.getElementById("inc");
 const addExpense = document.getElementById("exp");
  
+const inputsList = document.getElementById('inputsList')
+
+let inputData = {
+  inputs: []
+}
+
+let storedData = localStorage.getItem("inputData");
+if (storedData) {
+  inputData = JSON.parse(storedData);
+}
+
+for(let i = 0; i < inputData.inputs.length; i++){
+  const newInput = document.createElement("li");
+  newInput.classList.add(inputData.inputs[i].type)
+  newInput.innerHTML = "<h3>" + `Income: ${inputData.inputs[i].name}` + "</h3>" + "<h3>" + `${inputData.inputs[i].value} R$` + "</h3>";
+  inputsList.appendChild(newInput)
+}
+
 addIncome.addEventListener("click", () => {
     const incomeName = document.getElementById('incomeName').value
     const incomeValue = document.getElementById('incomeValue').value
 
-    console.log(incomeName)
-    console.log(incomeValue)
+    const newItem = {
+      name: incomeName,
+      value: incomeValue,
+      type: "income"
+    }  
 
+    inputData.inputs.push(newItem)
 
-    const inputsBox = document.getElementById('showInputs')
+    const newInput = document.createElement("li");
+       newInput.innerHTML = "<h3>" + `Income: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+       newInput.classList.add(newItem.type)
+       inputsList.appendChild(newInput)
 
-    const newInput = document.createElement("div");
-       newInput.classList.add('income')
-       newInput.innerHTML = "<h3>" + `Income: ${incomeName}` + "</h3>" + "<h3>" + `${incomeValue} R$` + "</h3>";
-       inputsBox.appendChild(newInput);
+    localStorage.setItem("inputData", JSON.stringify(inputData))
 })
 
 addExpense.addEventListener("click", () => {
     const expenseName = document.getElementById('expenseName').value
     const expenseValue = document.getElementById('expenseValue').value
 
-    console.log(expenseName)
-    console.log(expenseValue)
+    const newItem = {
+      name: expenseName,
+      value: expenseValue,
+      type: "expense"
+    } 
 
+    inputData.inputs.push(newItem)
 
-    const inputsBox = document.getElementById('showInputs')
+    const newInput = document.createElement("li");
+       newInput.innerHTML = "<h3>" + `Expense: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+       newInput.classList.add(newItem.type)
+       inputsList.appendChild(newInput)
 
-    const newInput = document.createElement("div");
-       newInput.classList.add('expense')
-       newInput.innerHTML = "<h3>" + `Expense: ${expenseName}` + "</h3>" + "<h3>" + `${expenseValue} R$` + "</h3>";
-       inputsBox.appendChild(newInput);
-
+    localStorage.setItem("inputData", JSON.stringify(inputData))
 
 })
 
