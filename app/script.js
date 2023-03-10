@@ -3,7 +3,8 @@ const resultDiv = document.getElementById("result");
 
 const addIncome = document.getElementById("inc");
 const addExpense = document.getElementById("exp");
- 
+const addInvestment = document.getElementById('inv')
+
 const inputsList = document.getElementById('inputsList')
 
 let inputData = {
@@ -61,6 +62,26 @@ addExpense.addEventListener("click", () => {
 
     localStorage.setItem("inputData", JSON.stringify(inputData))
 
+})
+
+addInvestment.addEventListener("click", () => {
+  const investmentName = document.getElementById('investmentName').value
+  const investmentValue = document.getElementById('investmentValue').value
+
+  const newItem = {
+    name: investmentName,
+    value: investmentValue,
+    type: "investment"
+  } 
+
+  inputData.inputs.push(newItem)
+
+  const newInput = document.createElement("li");
+     newInput.innerHTML = "<h3>" + `investment: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+     newInput.classList.add(newItem.type)
+     inputsList.appendChild(newInput)
+
+  localStorage.setItem("inputData", JSON.stringify(inputData))
 })
 
 

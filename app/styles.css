@@ -10,6 +10,7 @@ body {
     --background: #191816;
     --income: #00a67d;
     --expense: #f22c3d;
+    --invest: #7922eb;
     --form-background: #24221f;
     --primary-color: #ffc632;
    }
@@ -34,6 +35,7 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
+    color: var(--primary-color);
   }
 
   #home {
@@ -42,7 +44,7 @@ body {
 
   #inputs {
     margin: 1rem 2rem;
-    background: var(--form-background);
+    background: var(--background);
   }
 
   #inputsValues {
@@ -54,12 +56,12 @@ body {
     
   }
 
-  input {
+  #inputsValues input {
     margin-left: 10px;
     padding: 5px;
     border-radius: 5px;
     color: white;
-    
+    background: var(--form-background);
   }
 
   .inc {
@@ -93,6 +95,22 @@ body {
     margin: 0; 
     }
 
+  .inv {
+      border: none;
+  }
+   
+  .inv:focus {
+      outline: none;
+      border: 1px solid var(--invest);
+  }
+  
+  /* remove number input style */
+  .inv::-webkit-outer-spin-button,
+  .inv::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; 
+   }
+
    #inc {
     height: 2rem;
     margin-left: 10px;
@@ -118,9 +136,24 @@ body {
     cursor: pointer;
     align-items: center;
   }
+
+  #inv {
+    height: 2rem;
+    margin-left: 10px;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: var(--invest);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+  }
   
   #inputsList {
     padding: 2rem;
+    background: var(--form-background);
+    border-radius: 8px;
   }
   
 
@@ -132,6 +165,12 @@ body {
 
   .income {
     color: var(--income);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .investment {
+    color: var(--invest);
     display: flex;
     justify-content: space-between;
   }
