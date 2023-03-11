@@ -1,6 +1,3 @@
-const calculateBtn = document.getElementById("calculate");
-const resultDiv = document.getElementById("result");
-
 const addIncome = document.getElementById("inc");
 const addExpense = document.getElementById("exp");
 const addInvestment = document.getElementById('inv')
@@ -28,24 +25,30 @@ addIncome.addEventListener("click", () => {
     const incomeValue = document.getElementById('incomeValue').value
 
     const newItem = {
-      name: incomeName,
-      value: incomeValue,
-      type: "income"
-    }  
-
+        name: incomeName,
+        value: incomeValue,
+        type: "income"
+      }  
+  
     inputData.inputs.push(newItem)
-
+  
     const newInput = document.createElement("li");
-       newInput.innerHTML = "<h3>" + `Income: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
-       newInput.classList.add(newItem.type)
-       inputsList.appendChild(newInput)
-
+         newInput.innerHTML = "<h3>" + `Income: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+         newInput.classList.add(newItem.type)
+         inputsList.appendChild(newInput)
+  
     localStorage.setItem("inputData", JSON.stringify(inputData))
+    
+    
 })
 
 addExpense.addEventListener("click", () => {
     const expenseName = document.getElementById('expenseName').value
     const expenseValue = document.getElementById('expenseValue').value
+
+    if(incomeName || incomeValue == ''){
+      return 0
+    }
 
     const newItem = {
       name: expenseName,
@@ -85,8 +88,38 @@ addInvestment.addEventListener("click", () => {
 })
 
 
+function cauculateIncomes() {
+  let totalIncomes = 0
 
+  for(let i = 0; i < inputData.inputs.length; i++){
+  
+    if (inputData.inputs[i].type == "income"){
+      let income = parseInt(inputData.inputs[i].value)
+      totalIncomes = totalIncomes + income
+    }
+  }
 
+  const showIncomes = document.getElementById('totalIncomes')
+  showIncomes.innerHTML = totalIncomes + "<h3> R$ </h3>" 
+}
+
+function cauculateExpenses() {
+  let totalExpenses = 0
+
+  for(let i = 0; i < inputData.inputs.length; i++){
+  
+    if (inputData.inputs[i].type == "expense"){
+      let expense = parseInt(inputData.inputs[i].value)
+      totalExpenses = totalExpenses + expense
+    }
+  }
+
+  const showExpenses = document.getElementById('totalExpenses')
+  showExpenses.innerHTML = totalExpenses + "<h3> R$ </h3>" 
+}
+
+cauculateIncomes()
+cauculateExpenses()
 
 /*
 calculateBtn.addEventListener("click", () => {
