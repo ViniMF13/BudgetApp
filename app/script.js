@@ -46,10 +46,6 @@ addExpense.addEventListener("click", () => {
     const expenseName = document.getElementById('expenseName').value
     const expenseValue = document.getElementById('expenseValue').value
 
-    if(incomeName || incomeValue == ''){
-      return 0
-    }
-
     const newItem = {
       name: expenseName,
       value: expenseValue,
@@ -88,7 +84,11 @@ addInvestment.addEventListener("click", () => {
 })
 
 
-function cauculateIncomes() {
+const resultButton = document.getElementById('resultsButton')
+
+resultButton.addEventListener('click', ()=>  {
+  const showResults = document.getElementById('showResults')
+  showResults.classList.remove('none')
   let totalIncomes = 0
 
   for(let i = 0; i < inputData.inputs.length; i++){
@@ -100,10 +100,8 @@ function cauculateIncomes() {
   }
 
   const showIncomes = document.getElementById('totalIncomes')
-  showIncomes.innerHTML = totalIncomes + "<h3> R$ </h3>" 
-}
+  showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
 
-function cauculateExpenses() {
   let totalExpenses = 0
 
   for(let i = 0; i < inputData.inputs.length; i++){
@@ -115,11 +113,25 @@ function cauculateExpenses() {
   }
 
   const showExpenses = document.getElementById('totalExpenses')
-  showExpenses.innerHTML = totalExpenses + "<h3> R$ </h3>" 
-}
+  showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
 
-cauculateIncomes()
-cauculateExpenses()
+  let totalInvestments = 0
+
+  for(let i = 0; i < inputData.inputs.length; i++){
+  
+    if (inputData.inputs[i].type == "investment"){
+      let investment = parseInt(inputData.inputs[i].value)
+      totalInvestments = totalInvestments + investment
+    }
+  }
+
+  const showInvestments = document.getElementById('totalInvestments')
+  showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
+})
+
+
+
+
 
 /*
 calculateBtn.addEventListener("click", () => {
