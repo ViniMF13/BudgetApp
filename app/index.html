@@ -13,6 +13,7 @@
 
     <section id="home">
         <div id="inputs">
+
             <div id="inputsValues">
                 <h2>Income</h2>
                 <div id="income" class="flex">
@@ -34,7 +35,7 @@
                 </div>
             </div>
             
-            <ul id="inputsList"></ul>
+            <ul id="inputsList" class="none"></ul>
         </div>
     </section>
     <section id="results">
@@ -43,20 +44,26 @@
         </div>
         <div id="showResults" class="none">
             <div class="resultBox">
-                <h2>Total Incomes</h2>
-                <h3 id="totalIncomes" class="totalBox"></h3>
+                <h2>INCOMES</h2>
+                <h3 id="totalIncomes" class="totalBox income"></h3>
             </div>
             <div class="resultBox">
-                <h2>Total Expenses</h2>
-                <h3 id="totalExpenses" class="totalBox"></h3>
+                <h2>EXPENSES</h2>
+                <h3 id="totalExpenses" class="totalBox expense"></h3>
             </div>
             <div class="resultBox">
-                <h2>Total Investments</h2>
-                <h3 id="totalInvestments" class="totalBox"></h3>
+                <h2>INVESTMENTS</h2>
+                <h3 id="totalInvestments" class="totalBox investment"></h3>
             </div> 
+    
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+        
         </div>
     </section>
     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
