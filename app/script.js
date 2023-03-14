@@ -8,6 +8,7 @@ let inputData = {
   inputs: []
 }
 
+//get the data from localStorage and show the data on the inputList 
 let storedData = localStorage.getItem("inputData");
 if (storedData) {
   inputData = JSON.parse(storedData);
@@ -21,6 +22,44 @@ for(let i = 0; i < inputData.inputs.length; i++){
   inputsList.appendChild(newInput)
 }
 
+// show the value of the inputs at the end of the inputsList
+
+  let totalIncomes = 0
+  let totalExpenses = 0
+  let totalInvestments = 0
+
+
+  for(let i = 0; i < inputData.inputs.length; i++){
+    if (inputData.inputs[i].type == "income"){
+      let income = parseInt(inputData.inputs[i].value)
+      totalIncomes = totalIncomes + income
+    }
+  }
+  const showIncomes = document.getElementById('totalIncomes')
+  showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
+
+  for(let i = 0; i < inputData.inputs.length; i++){
+  
+    if (inputData.inputs[i].type == "expense"){
+      let expense = parseInt(inputData.inputs[i].value)
+      totalExpenses = totalExpenses + expense
+    }
+  }
+  const showExpenses = document.getElementById('totalExpenses')
+  showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
+
+  for(let i = 0; i < inputData.inputs.length; i++){
+  
+    if (inputData.inputs[i].type == "investment"){
+      let investment = parseInt(inputData.inputs[i].value)
+      totalInvestments = totalInvestments + investment
+    }
+  }
+  const showInvestments = document.getElementById('totalInvestments')
+  showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
+
+
+// create functions for add values from inputs on the inputData array
 addIncome.addEventListener("click", () => {
     const incomeName = document.getElementById('incomeName').value
     const incomeValue = document.getElementById('incomeValue').value
@@ -73,9 +112,9 @@ addExpense.addEventListener("click", () => {
        inputsList.appendChild(newInput)
 
     localStorage.setItem("inputData", JSON.stringify(inputData))
-    
     document.getElementById("expenseName").value = "";
     document.getElementById("expenseValue").value = "";
+
 })
 
 addInvestment.addEventListener("click", () => {
@@ -95,7 +134,7 @@ addInvestment.addEventListener("click", () => {
   inputData.inputs.push(newItem)
 
   const newInput = document.createElement("li");
-     newInput.innerHTML = "<h3>" + `investment: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+     newInput.innerHTML = "<h3>" + `investment: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>"
      newInput.classList.add(newItem.type)
      inputsList.appendChild(newInput)
 
@@ -106,47 +145,39 @@ addInvestment.addEventListener("click", () => {
 })
 
 
+
+
+
 const resultButton = document.getElementById('resultsButton')
 
 resultButton.addEventListener('click', ()=>  {
+
   const showResults = document.getElementById('showResults')
   showResults.classList.remove('none')
 
-  let totalIncomes = 0
-  let totalExpenses = 0
-  let totalInvestments = 0
+
+  const periodStart = document.getElementById('periodStart').value
+  const periodEnd = document.getElementById('periodEnd').value
+
+  const newPeriod = document.createElement('li')
+  newPeriod.innerHTML = "<h3>" + `De: ${periodStart} até ${periodEnd}` + "</h3>"
+  + "<h3>" + `Incomes: ${totalIncomes}` + "</h3>" + "<h3>" + `Expenses: ${totalExpenses}` + "</h3>" + "<h3>" + `investments: ${totalInvestments}` + "</h3>"
+
+
+  showResults.appendChild(newPeriod)
+
+
+})
+
+function createChart (){
+  let categorys = []
 
   for(let i = 0; i < inputData.inputs.length; i++){
-    if (inputData.inputs[i].type == "income"){
-      let income = parseInt(inputData.inputs[i].value)
-      totalIncomes = totalIncomes + income
-    }
+       categorys.push(inputData.inputs[i].name)
   }
-  const showIncomes = document.getElementById('totalIncomes')
-  showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
 
-  for(let i = 0; i < inputData.inputs.length; i++){
-  
-    if (inputData.inputs[i].type == "expense"){
-      let expense = parseInt(inputData.inputs[i].value)
-      totalExpenses = totalExpenses + expense
-    }
-  }
-  const showExpenses = document.getElementById('totalExpenses')
-  showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
+  console.log(categorys)
 
-  for(let i = 0; i < inputData.inputs.length; i++){
-  
-    if (inputData.inputs[i].type == "investment"){
-      let investment = parseInt(inputData.inputs[i].value)
-      totalInvestments = totalInvestments + investment
-    }
-  }
-  const showInvestments = document.getElementById('totalInvestments')
-  showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
-
-
-  // Define the data to display in the pie chart
   var ctx = document.getElementById('myChart').getContext('2d');
   var data = {
     labels: ['income', 'expense', 'investments'],
@@ -165,11 +196,8 @@ resultButton.addEventListener('click', ()=>  {
       maintainAspectRatio: false
     }
    })
-
-  })
-
-
-
+}
+createChart()
 
 
 /*

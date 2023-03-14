@@ -8,12 +8,11 @@
   <body>
 
     <header>
-        <h1>Budget App</h1>
+        <h1>BUDGET APP</h1> <p>Beta</p>
     </header>
 
     <section id="home">
-        <div id="inputs">
-
+        <div id="inputs">            
             <div id="inputsValues">
                 <h2>Income</h2>
                 <div id="income" class="flex">
@@ -34,33 +33,40 @@
                     <button id="inv" class="flex">add</button>
                 </div>
             </div>
+
             
+            <div id="period" class="flex">
+                DE<input id="periodStart" type="date">
+                ATÉ<input id="periodEnd" type="date">
+            </div>
             <ul id="inputsList" class="none"></ul>
-        </div>
-    </section>
-    <section id="results">
-        <div class="flex center">
-            <button id="resultsButton">Generate Results</button>
-        </div>
-        <div id="showResults" class="none">
-            <div class="resultBox">
-                <h2>INCOMES</h2>
-                <h3 id="totalIncomes" class="totalBox income"></h3>
+
+            <div id="total" class="flex">
+                <div class="resultBox">
+                    <h3>INCOMES</h3>
+                    <h2 id="totalIncomes" class="totalBox income"></h2>
+                </div>
+                <div class="resultBox">
+                    <h3>EXPENSES</h3>
+                    <h2 id="totalExpenses" class="totalBox expense"></h2>
+                </div>
+                <div class="resultBox">
+                    <h3>INVESTMENTS</h3>
+                    <h2 id="totalInvestments" class="totalBox investment"></h2>
+                </div> 
             </div>
-            <div class="resultBox">
-                <h2>EXPENSES</h2>
-                <h3 id="totalExpenses" class="totalBox expense"></h3>
-            </div>
-            <div class="resultBox">
-                <h2>INVESTMENTS</h2>
-                <h3 id="totalInvestments" class="totalBox investment"></h3>
-            </div> 
-    
             <div>
                 <canvas id="myChart"></canvas>
             </div>
-        
         </div>
+    </section>
+    <section id="results">
+
+        <div class="flex center">
+            <button id="resultsButton">Fechar Período</button>
+        </div>
+
+        <ul id="showResults" class="none"></ul>
     </section>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

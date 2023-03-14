@@ -33,17 +33,23 @@ body {
   .none {
    display: none;
   }
+
+  li{
+    list-style: none;
+  }
   
   header {
+   display: flex;
    background: var(--background);
    justify-content: center;
   }
 
-  header h1 {
+  header h1, p {
     padding: 1rem;
     margin: 0;
     display: flex;
     justify-content: center;
+
     color: var(--primary-color);
   }
 
@@ -59,10 +65,10 @@ body {
   #inputsValues {
     color: var(--text-base);
     padding: 2rem 0;
+    margin: 2rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
   }
 
   #inputsValues input {
@@ -158,11 +164,30 @@ body {
     cursor: pointer;
     align-items: center;
   }
-  
+
+  #period {
+   color: var(--primary-color);
+   font-size: 1.5rem;
+   font-weight: 400;
+   justify-content: center;
+   align-items: end;
+   gap: 1rem;
+  }
+
+  #period h2 {
+    margin: 0;
+  }
+
+  #period input {
+    height: 2rem;
+  }
+
   #inputsList {
     padding: 2rem;
     background: var(--form-background);
     border-radius: 8px;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
   }
   
 
@@ -183,6 +208,34 @@ body {
     display: flex;
     justify-content: space-between;
   }
+
+  #total {
+  display: flex;
+  gap: 0.5rem;
+  }
+
+  .resultBox{
+    text-align: center;
+    width: 100%;
+    color: var(--text-base);
+    background: var(--form-background);
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+  }
+
+  .totalBox {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+
+
+
 
   #results {
     padding: 2rem;
@@ -208,33 +261,21 @@ body {
 
   }
 
-  #resultsButton:hover {
-   
-  }
-
   #showResults {
     color: var(--text-title);
     text-align: center;
     font-weight: bold;
     font-size: 24px;
+    padding: 0;
+
   }
 
-  .resultBox{
-    background: var(--form-background);
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    font-size: 1.5rem;
+  #showResults li {
+    border: 1px solid red;
+    width: 100%;
+  }
+  
 
   
-  }
-
-  .totalBox {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    justify-content: center;
-  }
     
   
