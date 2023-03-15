@@ -270,9 +270,15 @@ body {
 
   }
 
-  #showResults li {
+  #showResults div {
     border: 1px solid red;
     width: 100%;
+  }
+
+  #showResults canvas {
+    border: 1px solid red;
+    width: 100%;
+    padding: 4rem;
   }
   
 

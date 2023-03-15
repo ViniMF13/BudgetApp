@@ -23,11 +23,9 @@ for(let i = 0; i < inputData.inputs.length; i++){
 }
 
 // show the value of the inputs at the end of the inputsList
-
   let totalIncomes = 0
   let totalExpenses = 0
   let totalInvestments = 0
-
 
   for(let i = 0; i < inputData.inputs.length; i++){
     if (inputData.inputs[i].type == "income"){
@@ -58,15 +56,13 @@ for(let i = 0; i < inputData.inputs.length; i++){
   const showInvestments = document.getElementById('totalInvestments')
   showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
 
-
-// create functions for add values from inputs on the inputData array
+// add values from inputs on the inputData array
 addIncome.addEventListener("click", () => {
     const incomeName = document.getElementById('incomeName').value
     const incomeValue = document.getElementById('incomeValue').value
     inputsList.classList.remove('none')
     
     if(incomeName == '' || incomeValue == ''){
-
       return
     }
 
@@ -87,7 +83,6 @@ addIncome.addEventListener("click", () => {
 
     document.getElementById("incomeName").value = "";
     document.getElementById("incomeValue").value = "";
-    
 })
 
 addExpense.addEventListener("click", () => {
@@ -149,36 +144,20 @@ addInvestment.addEventListener("click", () => {
 
 
 const resultButton = document.getElementById('resultsButton')
-
 resultButton.addEventListener('click', ()=>  {
 
   const showResults = document.getElementById('showResults')
   showResults.classList.remove('none')
 
-
   const periodStart = document.getElementById('periodStart').value
   const periodEnd = document.getElementById('periodEnd').value
 
-  const newPeriod = document.createElement('li')
-  newPeriod.innerHTML = "<h3>" + `De: ${periodStart} até ${periodEnd}` + "</h3>"
-  + "<h3>" + `Incomes: ${totalIncomes}` + "</h3>" + "<h3>" + `Expenses: ${totalExpenses}` + "</h3>" + "<h3>" + `investments: ${totalInvestments}` + "</h3>"
+  const newPeriod = document.createElement('div')
+  newPeriod.innerHTML = "<h3>" + `De: ${periodStart} até ${periodEnd}`
 
+  const newChart = document.createElement('canvas')
+  var ctx = newChart.getContext('2d');
 
-  showResults.appendChild(newPeriod)
-
-
-})
-
-function createChart (){
-  let categorys = []
-
-  for(let i = 0; i < inputData.inputs.length; i++){
-       categorys.push(inputData.inputs[i].name)
-  }
-
-  console.log(categorys)
-
-  var ctx = document.getElementById('myChart').getContext('2d');
   var data = {
     labels: ['income', 'expense', 'investments'],
     datasets: [{
@@ -193,9 +172,17 @@ function createChart (){
     data: data,
     options: {
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: true
     }
    })
+
+  showResults.appendChild(newPeriod)
+  newPeriod.appendChild(newChart)
+})
+
+function createChart (){
+
+
 }
 createChart()
 
