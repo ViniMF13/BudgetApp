@@ -152,8 +152,8 @@ resultButton.addEventListener('click', ()=>  {
   const periodStart = document.getElementById('periodStart').value
   const periodEnd = document.getElementById('periodEnd').value
 
-  const newPeriod = document.createElement('div')
-  newPeriod.innerHTML = "<h3>" + `De: ${periodStart} até ${periodEnd}`
+  const newPeriod = document.createElement('h3')
+  newPeriod.innerHTML = `De: ${periodStart} até ${periodEnd}`
 
   const newChart = document.createElement('canvas')
   var ctx = newChart.getContext('2d');
@@ -176,15 +176,21 @@ resultButton.addEventListener('click', ()=>  {
     }
    })
 
+  const InputsHistoric = document.createElement('ul')
+
+  for(let i = 0; i < inputData.inputs.length; i++){
+  const newInput = document.createElement("li");
+  newInput.classList.add(inputData.inputs[i].type)
+  newInput.innerHTML = "<h5>" + inputData.inputs[i].name + "</h5>" + "<h5>" + `${inputData.inputs[i].value} R$` + "</h5>";
+  InputsHistoric.appendChild(newInput)
+}
+
+
   showResults.appendChild(newPeriod)
-  newPeriod.appendChild(newChart)
+  showResults.appendChild(newChart)
+  showResults.appendChild(InputsHistoric)
 })
 
-function createChart (){
-
-
-}
-createChart()
 
 
 /*

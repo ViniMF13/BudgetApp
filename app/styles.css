@@ -267,18 +267,26 @@ body {
     font-weight: bold;
     font-size: 24px;
     padding: 0;
-
   }
 
-  #showResults div {
-    border: 1px solid red;
+  #showResults h3 {
+    background: var(--form-background);
     width: 100%;
+    margin: 2rem 0 0 0;
+  }
+
+  #showResults ul {
+    background: var(--form-background);
+    height: 250px;
+    margin: 0;
+    padding: 1rem;
+    overflow: auto;
   }
 
   #showResults canvas {
-    border: 1px solid red;
     width: 100%;
     padding: 4rem;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   }
   
 
