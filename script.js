@@ -1,5 +1,5 @@
-const addIncome = document.getElementById("inc");
-const addExpense = document.getElementById("exp");
+const addIncome = document.getElementById("inc")
+const addExpense = document.getElementById("exp")
 const addInvestment = document.getElementById('inv')
 
 const inputsList = document.getElementById('inputsList')
@@ -9,16 +9,16 @@ let inputData = {
 }
 
 //get the data from localStorage and show the data on the inputList 
-let storedData = localStorage.getItem("inputData");
+let storedData = localStorage.getItem("inputData")
 if (storedData) {
-  inputData = JSON.parse(storedData);
+  inputData = JSON.parse(storedData)
   inputsList.classList.remove('none')
 }
 
 for(let i = 0; i < inputData.inputs.length; i++){
-  const newInput = document.createElement("li");
+  const newInput = document.createElement("li")
   newInput.classList.add(inputData.inputs[i].type)
-  newInput.innerHTML = "<h3>" + inputData.inputs[i].name + "</h3>" + "<h3>" + `${inputData.inputs[i].value} R$` + "</h3>";
+  newInput.innerHTML = "<h3>" + inputData.inputs[i].name + "</h3>" + "<h3>" + `${inputData.inputs[i].value} R$` + "</h3>"
   inputsList.appendChild(newInput)
 }
 
@@ -139,21 +139,18 @@ addInvestment.addEventListener("click", () => {
   document.getElementById("investmentValue").value = "";
 })
 
-
-
-
+const showResults = document.getElementById('showResults')
 
 const resultButton = document.getElementById('resultsButton')
 resultButton.addEventListener('click', ()=>  {
 
-  const showResults = document.getElementById('showResults')
   showResults.classList.remove('none')
 
   const periodStart = document.getElementById('periodStart').value
   const periodEnd = document.getElementById('periodEnd').value
-
   const newPeriod = document.createElement('h3')
   newPeriod.innerHTML = `De: ${periodStart} até ${periodEnd}`
+
 
   const newChart = document.createElement('canvas')
   var ctx = newChart.getContext('2d');
@@ -165,8 +162,6 @@ resultButton.addEventListener('click', ()=>  {
     backgroundColor: ['#00a67d', '#f22c3d', '#7922eb',]
     }]
   }
-
-  // Create the pie chart
   var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: data,
@@ -185,103 +180,27 @@ resultButton.addEventListener('click', ()=>  {
   InputsHistoric.appendChild(newInput)
 }
 
-
   showResults.appendChild(newPeriod)
   showResults.appendChild(newChart)
   showResults.appendChild(InputsHistoric)
+  
 })
 
 
 
 /*
-function createChart() {
-  let categorys = []
-
-  for(let i = 0; i < inputData.inputs.length; i++){
-
-    if (inputData.inputs[i].type == "expense"){
- 
-      let category = inputData.inputs[i].name
-      categorys.push(category)
-    }
-  }
-      console.log(categorys)
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-    // Define the data to display in the pie chart
-    var data = {
-        labels: categorys,
-        datasets: [{
-          data: [100, 200, 300],
-          backgroundColor: ['#00a67d', '#f22c3d', '#7922eb',]
-        }]
-      }
-      
-      // Create the pie chart
-      var myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: data,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false
-        }
-      })
+let historicData = {
+  totals: [],
+  inputs: []
 }
 
-createChart()
-
-resultButton.addEventListener('click', ()=>  {
-
-  const showResults = document.getElementById('showResults')
+let storedHistoric = localStorage.getItem("historicData")
+if (storedHistoric) {
+  storedHistoric = JSON.parse(historicData)
   showResults.classList.remove('none')
+}
 
-  let totalIncomes = 0
-  let totalExpenses = 0
-  let totalInvestments = 0
-
-  for(let i = 0; i < inputData.inputs.length; i++){
-
-    if (inputData.inputs[i].type == "income"){
-      let income = parseInt(inputData.inputs[i].value)
-      totalIncomes = totalIncomes + income
-    }
-    else if (inputData.inputs[i].type == "expense"){
-        let expense = parseInt(inputData.inputs[i].value)
-        totalExpenses = totalExpenses + expense
-    }
-    else if (inputData.inputs[i].type == "investment"){
-      let investment = parseInt(inputData.inputs[i].value)
-      totalInvestments = totalInvestments + investment
-    }
-  
-
-    const showIncomes = document.getElementById('totalIncomes')
-    showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
-
-    const showExpenses = document.getElementById('totalExpenses')
-    showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
-
-    const showInvestments = document.getElementById('totalInvestments')
-    showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
-
-
-
-  
-
-})
-
-
-calculateBtn.addEventListener("click", () => {
- const income = parseInt(document.getElementById("income").value);
- const expenses = parseInt(document.getElementById("expenses").value);
-
-  if (isNaN(income) || isNaN(expenses)) {
-    resultDiv.style.display = "none";
-    return;
-  }
-
-  const budget = income - expenses;
-  resultDiv.innerText = `Your budget for the month is $${budget}`;
-  resultDiv.style.display = "block";
-});
+for(let i = 0; i < historicData.size.length; i++){
+ console.log()
+}
 */
