@@ -16,29 +16,49 @@
             <div id="inputsValues">
                 <h2>Income</h2>
                 <div id="income" class="flex">
-                    <input type="string" id="incomeName" class="inc" placeholder="Name">
-                    <input type="number" id="incomeValue" class="inc" placeholder="R$">
+                    <div>
+                        <input id="incomeCategory" type="text" class="inc" placeholder="Category">
+                        <input type="string" id="incomeName" class="inc" placeholder="Name">
+                    </div>
+                    <div>
+                        <input id="incomeDate" class="inc" type="date">
+                        <input type="number" id="incomeValue" class="inc" placeholder="R$">
+                    </div>
                     <button id="inc" class="flex">add</button>
                 </div>
                 <h2>Expense</h2>
                 <div id="expenses" class="flex">
-                    <input type="string" id="expenseName" class="exp" placeholder="Name">
-                    <input type="number" id="expenseValue" class="exp" placeholder="R$">
+                    <div>
+                        <input id="expenseCategory" type="text" class="exp" placeholder="Category">
+                        <input type="string" id="expenseName" class="exp" placeholder="Name">
+                    </div>
+                    <div>
+                        <input id="expenseDate" class="exp" type="date">
+                        <input type="number" id="expenseValue" class="exp" placeholder="R$">
+                    </div>
                     <button id="exp" class="flex">add</button>
                 </div>
                 <h2>Investments</h2>
                 <div id="investments" class="flex">
-                    <input type="string" id="investmentName" class="inv" placeholder="Name">
-                    <input type="number" id="investmentValue" class="inv" placeholder="R$">
+                    <div>
+                        <input id="investmentCategory" type="text" class="inv" placeholder="Category">
+                        <input type="string" id="investmentName" class="inv" placeholder="Name">
+                    </div>
+                    <div>
+                        <input id="investmentDate" class="inv" type="date">
+                        <input type="number" id="investmentValue" class="inv" placeholder="R$">
+                    </div>
                     <button id="inv" class="flex">add</button>
                 </div>
             </div>
 
-            
+            <!--
             <div id="period" class="flex">
                 DE<input id="periodStart" type="date">
                 ATÉ<input id="periodEnd" type="date">
             </div>
+        -->
+
             <ul id="inputsList" class="none"></ul>
 
             <div id="total" class="flex">

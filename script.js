@@ -18,64 +18,35 @@ if (storedData) {
 for(let i = 0; i < inputData.inputs.length; i++){
   const newInput = document.createElement("li")
   newInput.classList.add(inputData.inputs[i].type)
-  newInput.innerHTML = "<h3>" + inputData.inputs[i].name + "</h3>" + "<h3>" + `${inputData.inputs[i].value} R$` + "</h3>"
+  newInput.innerHTML = "<h3>"+ inputData.inputs[i].name +"</h3>" + "<p>"+ inputData.inputs[i].category +"</p>" + "<h3>" + `${inputData.inputs[i].value} R$` + "</h3>" + "<p>"+ inputData.inputs[i].date +"</p>"
   inputsList.appendChild(newInput)
 }
-
-// show the value of the inputs at the end of the inputsList
-  let totalIncomes = 0
-  let totalExpenses = 0
-  let totalInvestments = 0
-
-  for(let i = 0; i < inputData.inputs.length; i++){
-    if (inputData.inputs[i].type == "income"){
-      let income = parseInt(inputData.inputs[i].value)
-      totalIncomes = totalIncomes + income
-    }
-  }
-  const showIncomes = document.getElementById('totalIncomes')
-  showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
-
-  for(let i = 0; i < inputData.inputs.length; i++){
-  
-    if (inputData.inputs[i].type == "expense"){
-      let expense = parseInt(inputData.inputs[i].value)
-      totalExpenses = totalExpenses + expense
-    }
-  }
-  const showExpenses = document.getElementById('totalExpenses')
-  showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
-
-  for(let i = 0; i < inputData.inputs.length; i++){
-  
-    if (inputData.inputs[i].type == "investment"){
-      let investment = parseInt(inputData.inputs[i].value)
-      totalInvestments = totalInvestments + investment
-    }
-  }
-  const showInvestments = document.getElementById('totalInvestments')
-  showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
 
 // add values from inputs on the inputData array
 addIncome.addEventListener("click", () => {
     const incomeName = document.getElementById('incomeName').value
     const incomeValue = document.getElementById('incomeValue').value
+    const incomeCategory = document.getElementById('incomeCategory').value
+    const incomeDate = document.getElementById('incomeDate').value
+
     inputsList.classList.remove('none')
     
-    if(incomeName == '' || incomeValue == ''){
+    if(incomeName == '' || incomeValue == '' || incomeCategory == '' || incomeDate == ''){
       return
     }
 
     const newItem = {
         name: incomeName,
         value: incomeValue,
+        category: incomeCategory,
+        date: incomeDate,
         type: "income"
       }  
   
     inputData.inputs.push(newItem)
   
     const newInput = document.createElement("li");
-         newInput.innerHTML = "<h3>" + `Income: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+         newInput.innerHTML = "<h3>"+ newInput.name +"</h3>" + "<p>"+ newInput.category +"</p>" + "<h3>" + `${newInput.value} R$` + "</h3>" + "<p>"+ newInput.date +"</p>"
          newInput.classList.add(newItem.type)
          inputsList.appendChild(newInput)
   
@@ -83,53 +54,66 @@ addIncome.addEventListener("click", () => {
 
     document.getElementById("incomeName").value = "";
     document.getElementById("incomeValue").value = "";
+    document.getElementById("investmentDate").value = "";
+    document.getElementById("investmentCategory").value = "";
 })
 
 addExpense.addEventListener("click", () => {
     const expenseName = document.getElementById('expenseName').value
     const expenseValue = document.getElementById('expenseValue').value
+    const expenseCategory = document.getElementById('expenseCategory').value
+    const expenseDate = document.getElementById('expenseDate').value
 
-    if(expenseName == '' || expenseValue == ''){
+    if(expenseName == '' || expenseValue == '' || expenseCategory == '' || expenseDate == ''){
       return
     }
 
     const newItem = {
       name: expenseName,
       value: expenseValue,
+      category: expenseCategory,
+      date: expenseDate,
       type: "expense"
     } 
 
     inputData.inputs.push(newItem)
 
     const newInput = document.createElement("li");
-       newInput.innerHTML = "<h3>" + `Expense: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>";
+       newInput.innerHTML = "<h3>"+ newInput.name +"</h3>" + "<p>"+ newInput.category +"</p>" + "<h3>" + `${newInput.value} R$` + "</h3>" + "<p>"+ newInput.date +"</p>"
        newInput.classList.add(newItem.type)
        inputsList.appendChild(newInput)
 
     localStorage.setItem("inputData", JSON.stringify(inputData))
+
     document.getElementById("expenseName").value = "";
     document.getElementById("expenseValue").value = "";
+    document.getElementById("investmentCategory").value = "";
+    document.getElementById("investmentDate").value = "";
 
 })
 
 addInvestment.addEventListener("click", () => {
   const investmentName = document.getElementById('investmentName').value
   const investmentValue = document.getElementById('investmentValue').value
+  const investmentCategory = document.getElementById('investmentCategory').value
+  const investmentDate = document.getElementById('investmentDate').value
 
-  if(investmentName == '' || investmentValue == ''){
+  if(investmentName == '' || investmentValue == ''|| investmentCategory == '' || investmentDate == ''){
     return
   }
 
   const newItem = {
     name: investmentName,
     value: investmentValue,
+    category: investmentCategory,
+    date: investmentDate,
     type: "investment"
   } 
 
   inputData.inputs.push(newItem)
 
   const newInput = document.createElement("li");
-     newInput.innerHTML = "<h3>" + `investment: ${newItem.name}` + "</h3>" + "<h3>" + `${newItem.value} R$` + "</h3>"
+     newInput.innerHTML = "<h3>"+ newInput.name +"</h3>" + "<p>"+ newInput.category +"</p>" + "<h3>" + `${newInput.value} R$` + "</h3>" + "<p>"+ newInput.date +"</p>"
      newInput.classList.add(newItem.type)
      inputsList.appendChild(newInput)
 
@@ -137,7 +121,48 @@ addInvestment.addEventListener("click", () => {
 
   document.getElementById("investmentName").value = "";
   document.getElementById("investmentValue").value = "";
+  document.getElementById("investmentCategory").value = "";
+  document.getElementById("investmentDate").value = "";
 })
+
+// show the value of the inputs at the end of the inputsList
+let totalIncomes = 0
+let totalExpenses = 0
+let totalInvestments = 0
+
+for(let i = 0; i < inputData.inputs.length; i++){
+  if (inputData.inputs[i].type == "income"){
+    let income = parseInt(inputData.inputs[i].value)
+    totalIncomes = totalIncomes + income
+  }
+}
+const showIncomes = document.getElementById('totalIncomes')
+showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
+
+for(let i = 0; i < inputData.inputs.length; i++){
+
+  if (inputData.inputs[i].type == "expense"){
+    let expense = parseInt(inputData.inputs[i].value)
+    totalExpenses = totalExpenses + expense
+  }
+}
+const showExpenses = document.getElementById('totalExpenses')
+showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
+
+for(let i = 0; i < inputData.inputs.length; i++){
+
+  if (inputData.inputs[i].type == "investment"){
+    let investment = parseInt(inputData.inputs[i].value)
+    totalInvestments = totalInvestments + investment
+  }
+}
+const showInvestments = document.getElementById('totalInvestments')
+showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
+
+
+
+
+
 
 const showResults = document.getElementById('showResults')
 
@@ -184,6 +209,13 @@ resultButton.addEventListener('click', ()=>  {
   showResults.appendChild(newChart)
   showResults.appendChild(InputsHistoric)
   
+  historicData = inputData
+  localStorage.setItem("historicData", JSON.stringify(historicData))
+
+  inputData = {
+    inputs: {}
+  }
+
 })
 
 

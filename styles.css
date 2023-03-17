@@ -189,6 +189,14 @@ body {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
   }
+
+  #inputsList li{
+    align-items: baseline;
+  }
+
+  #inputsList li p {
+    color: var(--text-base);
+  }
   
 
   .expense {
