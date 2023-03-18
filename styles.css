@@ -10,7 +10,7 @@ body {
     --background: #191816;
     --income: #00a67d;
     --expense: #f22c3d;
-    --invest: #7922eb;
+    --invest: #eba022e0;
     --form-background: #24221f;
     --primary-color: #ffc632;
    }
@@ -182,12 +182,25 @@ body {
     height: 2rem;
   }
 
+  #listHeader {
+    background: var(--form-background);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--text-base);
+    justify-content: space-between;
+  }
+
+  #listHeader h3 {
+    margin: 0;
+  }
   #inputsList {
     padding: 2rem;
     background: var(--form-background);
     border-radius: 8px;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+    height: 50vh;
+    overflow: auto;
   }
 
   #inputsList li{
