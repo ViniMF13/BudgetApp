@@ -46,7 +46,7 @@ addIncome.addEventListener("click", () => {
 
     inputsList.classList.remove('none')
     listHeader.classList.remove('none')
-    period.classList.remove('none')
+    
 
 
     const newItem = {
@@ -84,7 +84,7 @@ addExpense.addEventListener("click", () => {
 
     inputsList.classList.remove('none')
     listHeader.classList.remove('none')
-    period.classList.remove('none')
+    
 
     const newItem = {
       name: expenseName,
@@ -122,7 +122,7 @@ addInvestment.addEventListener("click", () => {
 
   inputsList.classList.remove('none')
   listHeader.classList.remove('none')
-  period.classList.remove('none')
+  
 
   const newItem = {
     name: investmentName,
@@ -212,7 +212,7 @@ for(let i = 0; i < historicData.length; i++){
   for(let j = 0; j < historicData[i].inputs.length; j++){
     const newInput = document.createElement("li");
     newInput.classList.add(historicData[i].inputs[j].type)
-    newInput.innerHTML = "<h5>"+historicData[i].inputs[j].name+"</h5>" + "<h5>"+historicData[i].inputs[j].category+"</h5>" + "<h5>"+historicData[i].inputs[j].data+"</h5>" + "<h5>"+`${historicData[i].inputs[j].value} R$`+"</h5>"
+    newInput.innerHTML = "<h5>"+historicData[i].inputs[j].name+"</h5>" + "<p>"+historicData[i].inputs[j].category+"</p>" + "<h5>"+`${historicData[i].inputs[j].value} R$`+"</h5>" + "<p>"+historicData[i].inputs[j].date+"</p>" 
     InputsHistoric.appendChild(newInput)
   }
 
@@ -224,17 +224,15 @@ for(let i = 0; i < historicData.length; i++){
 
 const resultButton = document.getElementById('resultsButton')
 resultButton.addEventListener('click', ()=>  {
-  const periodStart = document.getElementById('periodStart').value
-  const periodEnd = document.getElementById('periodEnd').value
+  const periodStart = inputData.inputs[0].date
+  const periodEnd = inputData.inputs[inputData.inputs.length - 1].date
+
 
   if(inputData.inputs.length === 0){
     alert('adicione dados para fechar periodo.')
     return 0
   }
-
   showResults.classList.remove('none')
-
-  
 
   let resultData = {
     period: [periodStart, periodEnd],

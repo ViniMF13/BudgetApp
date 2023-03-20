@@ -163,24 +163,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
-  }
-
-  #period {
-   color: var(--primary-color);
-   font-size: 1.5rem;
-   font-weight: 400;
-   justify-content: center;
-   align-items: end;
-   gap: 1rem;
-  }
-
-  #period h2 {
-    margin: 0;
-  }
-
-  #period input {
-    height: 2rem;
-  }
+  } 
 
   #listHeader {
     background: var(--form-background);
@@ -254,10 +237,6 @@ body {
     justify-content: center;
   }
 
-
-
-
-
   #results {
     padding: 2rem;
   }
@@ -304,6 +283,14 @@ body {
     overflow: auto;
   }
 
+  #showResults ul li {
+    align-items: baseline;
+  }
+
+  #showResults ul li p {
+    color: var(--text-base);
+    font-size: 1rem;
+  }
   #showResults canvas {
     width: 100%;
     padding: 4rem;
