@@ -3,6 +3,8 @@ const addExpense = document.getElementById("exp")
 const addInvestment = document.getElementById('inv')
 
 const inputsList = document.getElementById('inputsList')
+const listHeader = document.getElementById('listHeader')
+const period = document.getElementById('period')
 
 let inputData = {
   inputs: []
@@ -22,18 +24,31 @@ for(let i = 0; i < inputData.inputs.length; i++){
   inputsList.appendChild(newInput)
 }
 
+let totalIncomes = 0
+let totalExpenses = 0
+let totalInvestments = 0
+
+const showIncomes = document.getElementById('totalIncomes')
+const showExpenses = document.getElementById('totalExpenses')
+const showInvestments = document.getElementById('totalInvestments')
+
+
 // add values from inputs on the inputData array
 addIncome.addEventListener("click", () => {
     const incomeName = document.getElementById('incomeName').value
     const incomeValue = document.getElementById('incomeValue').value
     const incomeCategory = document.getElementById('incomeCategory').value
     const incomeDate = document.getElementById('incomeDate').value
-
-    inputsList.classList.remove('none')
     
     if(incomeName == '' || incomeValue == '' || incomeCategory == '' || incomeDate == ''){
       return
     }
+
+    inputsList.classList.remove('none')
+    listHeader.classList.remove('none')
+    period.classList.remove('none')
+
+
     const newItem = {
         name: incomeName,
         value: incomeValue,
@@ -44,12 +59,11 @@ addIncome.addEventListener("click", () => {
   
     inputData.inputs.push(newItem)
   
-    const newInput = document.createElement("li");
-         newInput.innerHTML = "<h3>"+ newInput.name +"</h3>" + "<p>"+ newInput.category +"</p>" + "<h3>" + `${newInput.value} R$` + "</h3>" + "<p>"+ newInput.date +"</p>"
+    const newInput = document.createElement("li")
+         newInput.innerHTML = "<h3>"+ newItem.name +"</h3>" + "<p>"+ newItem.category +"</p>" + "<h3>" + `${newItem.value} R$` + "</h3>" + "<p>"+ newItem.date +"</p>"
          newInput.classList.add(newItem.type)
          inputsList.appendChild(newInput)
-         
-  
+
     localStorage.setItem("inputData", JSON.stringify(inputData))
 
     document.getElementById("incomeName").value = ""
@@ -68,6 +82,10 @@ addExpense.addEventListener("click", () => {
       return
     }
 
+    inputsList.classList.remove('none')
+    listHeader.classList.remove('none')
+    period.classList.remove('none')
+
     const newItem = {
       name: expenseName,
       value: expenseValue,
@@ -79,7 +97,7 @@ addExpense.addEventListener("click", () => {
     inputData.inputs.push(newItem)
 
     const newInput = document.createElement("li");
-       newInput.innerHTML = "<h3>"+ newInput.name +"</h3>" + "<p>"+ newInput.category +"</p>" + "<h3>" + `${newInput.value} R$` + "</h3>" + "<p>"+ newInput.date +"</p>"
+       newInput.innerHTML = "<h3>"+ newItem.name +"</h3>" + "<p>"+ newItem.category +"</p>" + "<h3>" + `${newItem.value} R$` + "</h3>" + "<p>"+ newItem.date +"</p>"
        newInput.classList.add(newItem.type)
        inputsList.appendChild(newInput)
 
@@ -102,6 +120,10 @@ addInvestment.addEventListener("click", () => {
     return
   }
 
+  inputsList.classList.remove('none')
+  listHeader.classList.remove('none')
+  period.classList.remove('none')
+
   const newItem = {
     name: investmentName,
     value: investmentValue,
@@ -112,7 +134,7 @@ addInvestment.addEventListener("click", () => {
 
 
   const newInput = document.createElement("li");
-     newInput.innerHTML = "<h3>"+ newInput.name +"</h3>" + "<p>"+ newInput.category +"</p>" + "<h3>" + `${newInput.value} R$` + "</h3>" + "<p>"+ newInput.date +"</p>"
+     newInput.innerHTML = "<h3>"+ newItem.name +"</h3>" + "<p>"+ newItem.category +"</p>" + "<h3>" + `${newItem.value} R$` + "</h3>" + "<p>"+ newItem.date +"</p>"
      newInput.classList.add(newItem.type)
      inputsList.appendChild(newInput)
 
@@ -125,10 +147,8 @@ addInvestment.addEventListener("click", () => {
   document.getElementById("investmentDate").value = "";
 })
 
-// show the value of the inputs at the end of the inputsList
-let totalIncomes = 0
-let totalExpenses = 0
-let totalInvestments = 0
+
+
 
 for(let i = 0; i < inputData.inputs.length; i++){
   if (inputData.inputs[i].type == "income"){
@@ -136,8 +156,7 @@ for(let i = 0; i < inputData.inputs.length; i++){
     totalIncomes = totalIncomes + income
   }
 }
-const showIncomes = document.getElementById('totalIncomes')
-showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
+//showIncomes.innerHTML = '<h3>' + totalIncomes + '</h3>'  + "<h3> R$ </h3>"
 
 for(let i = 0; i < inputData.inputs.length; i++){
   if (inputData.inputs[i].type == "expense"){
@@ -145,8 +164,7 @@ for(let i = 0; i < inputData.inputs.length; i++){
     totalExpenses = totalExpenses + expense
   }
 }
-const showExpenses = document.getElementById('totalExpenses')
-showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
+//showExpenses.innerHTML = '<h3>' + totalExpenses + '</h3>'  + "<h3> R$ </h3>" 
 
 for(let i = 0; i < inputData.inputs.length; i++){
 
@@ -155,8 +173,7 @@ for(let i = 0; i < inputData.inputs.length; i++){
     totalInvestments = totalInvestments + investment
   }
 }
-const showInvestments = document.getElementById('totalInvestments')
-showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
+//showInvestments.innerHTML = '<h3>' + totalInvestments + '</h3>' + "<h3> R$ </h3>"
 
 
 const showResults = document.getElementById('showResults')
@@ -195,7 +212,7 @@ for(let i = 0; i < historicData.length; i++){
   for(let j = 0; j < historicData[i].inputs.length; j++){
     const newInput = document.createElement("li");
     newInput.classList.add(historicData[i].inputs[j].type)
-    newInput.innerHTML = "<h5>" + historicData[i].inputs[j].name + "</h5>" + "<h5>" + `${historicData[i].inputs[j].value} R$` + "</h5>";
+    newInput.innerHTML = "<h5>"+historicData[i].inputs[j].name+"</h5>" + "<h5>"+historicData[i].inputs[j].category+"</h5>" + "<h5>"+historicData[i].inputs[j].data+"</h5>" + "<h5>"+`${historicData[i].inputs[j].value} R$`+"</h5>"
     InputsHistoric.appendChild(newInput)
   }
 
@@ -207,11 +224,17 @@ for(let i = 0; i < historicData.length; i++){
 
 const resultButton = document.getElementById('resultsButton')
 resultButton.addEventListener('click', ()=>  {
+  const periodStart = document.getElementById('periodStart').value
+  const periodEnd = document.getElementById('periodEnd').value
+
+  if(inputData.inputs.length === 0){
+    alert('adicione dados para fechar periodo.')
+    return 0
+  }
 
   showResults.classList.remove('none')
 
-  const periodStart = document.getElementById('periodStart').value
-  const periodEnd = document.getElementById('periodEnd').value
+  
 
   let resultData = {
     period: [periodStart, periodEnd],
@@ -256,6 +279,8 @@ resultButton.addEventListener('click', ()=>  {
   showResults.appendChild(newChart)
   showResults.appendChild(InputsHistoric)
   
+  localStorage.removeItem('inputData')
+  location.reload()
   })
 
 
