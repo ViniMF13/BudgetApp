@@ -12,54 +12,19 @@
     </header>
 
     <section id="home">
-        <div id="inputs">            
+        <div id="inputs">        
             <div id="inputsValues">
-                <h2>Income</h2>
-                <div id="income" class="flex">
-                    <div>
-                        <input id="incomeCategory" type="text" class="inc" placeholder="Category">
-                        <input type="string" id="incomeName" class="inc" placeholder="Name">
+                    <input type="string" id="name" placeholder="Name">
+                    <input id="category" type="text" placeholder="Category">
+                    <input type="number" id="value" placeholder="R$">
+                    <input id="date" type="date">
+                    <div id="btnContainer">
+                        <button id="inc" class="flex addButton">Income</button>
+                        <button id="exp" class="flex addButton">Expense</button>
+                        <button id="inv" class="flex addButton">Investment</button>
                     </div>
-                    <div>
-                        <input id="incomeDate" class="inc" type="date">
-                        <input type="number" id="incomeValue" class="inc" placeholder="R$">
-                    </div>
-                    <button id="inc" class="flex">add</button>
-                </div>
-                <h2>Expense</h2>
-                <div id="expenses" class="flex">
-                    <div>
-                        <input id="expenseCategory" type="text" class="exp" placeholder="Category">
-                        <input type="string" id="expenseName" class="exp" placeholder="Name">
-                    </div>
-                    <div>
-                        <input id="expenseDate" class="exp" type="date">
-                        <input type="number" id="expenseValue" class="exp" placeholder="R$">
-                    </div>
-                    <button id="exp" class="flex">add</button>
-                </div>
-                <h2>Investments</h2>
-                <div id="investments" class="flex">
-                    <div>
-                        <input id="investmentCategory" type="text" class="inv" placeholder="Category">
-                        <input type="string" id="investmentName" class="inv" placeholder="Name">
-                    </div>
-                    <div>
-                        <input id="investmentDate" class="inv" type="date">
-                        <input type="number" id="investmentValue" class="inv" placeholder="R$">
-                    </div>
-                    <button id="inv" class="flex">add</button>
-                </div>
             </div>
-
-            <!--
-            <div id="period" class="flex none">
-                DE<input id="periodStart" type="date">
-                ATÉ<input id="periodEnd" type="date">
-            </div>
-            -->
-            
-            <div>
+            <div id="showInputs">
                 <div id="listHeader" class="flex none">
                     <h3>Name</h3>
                     <h3>Category</h3>
@@ -68,23 +33,6 @@
                 </div>
                 <ul id="inputsList" class="none"></ul>
             </div>
-            
-          <!--
-            <div id="total" class="flex">
-                <div class="resultBox">
-                    <h3>INCOMES</h3>
-                    <h2 id="totalIncomes" class="totalBox income"></h2>
-                </div>
-                <div class="resultBox">
-                    <h3>EXPENSES</h3>
-                    <h2 id="totalExpenses" class="totalBox expense"></h2>
-                </div>
-                <div class="resultBox">
-                    <h3>INVESTMENTS</h3>
-                    <h2 id="totalInvestments" class="totalBox investment"></h2>
-                </div> 
-            </div>
-        -->
         </div>
     </section>
     <section id="results">

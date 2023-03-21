@@ -10,34 +10,31 @@ body {
     --background: #191816;
     --income: #00a67d;
     --expense: #f22c3d;
-    --invest: #eba022e0;
+    --invest: #4353af;
     --form-background: #24221f;
     --primary-color: #ffc632;
    }
-
 
   body, input, textarea, button{
     font: 400 1rem 'poppins', sans-serif;
     background: var(--background);
   }
-  
-  .flex {
-    display: flex;
-  }
-
-  .center {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .none {
-   display: none;
-  }
 
   li{
     list-style: none;
   }
-  
+
+  .flex {
+    display: flex;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  .none {
+    display: none;
+  }
+
   header {
    display: flex;
    background: var(--background);
@@ -49,124 +46,78 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-
     color: var(--primary-color);
   }
 
-  #home {
-    background-color: var(--background);
-  }
-
   #inputs {
-    margin: 1rem 2rem;
+    margin: 4rem 4rem;
     background: var(--background);
   }
 
   #inputsValues {
     color: var(--text-base);
-    padding: 2rem 0;
+    padding: 2rem;
     margin: 2rem 0;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
     align-items: center;
   }
-
+ 
   #inputsValues input {
+    height: 1.5rem;
+    width: auto;
     margin-left: 10px;
     padding: 5px;
     border-radius: 5px;
+    border: none;
     color: white;
     background: var(--form-background);
   }
 
-  .inc {
-    border: none;
-  }
 
-  .inc:focus {
-    outline: none;
-    border: 1px solid var(--income);
-    }
-
-    /* remove number input style */
-    .inc::-webkit-outer-spin-button,
-    .inc::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; 
-    }
-
-  .exp {
-    border: none;
-  }
-
-  .exp:focus {
-    outline: none;
-    border: 1px solid var(--expense);
-    }
-
-    .exp::-webkit-outer-spin-button,
-    .exp::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; 
-    }
-
-  .inv {
-      border: none;
-  }
-   
-  .inv:focus {
-      outline: none;
-      border: 1px solid var(--invest);
-  }
-  
   /* remove number input style */
-  .inv::-webkit-outer-spin-button,
-  .inv::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0; 
+  #value::-webkit-outer-spin-button,
+  #value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+  }
+
+  #btnContainer{
+    display: flex;
    }
 
-   #inc {
-    height: 2rem;
-    margin-left: 10px;
-    padding: 1rem;
-    font-weight: bold;
+  #inc {
     background-color: var(--income);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    align-items: center;
   }
 
   #exp {
-    height: 2rem;
-    margin-left: 10px;
-    padding: 1rem;
-    font-weight: bold;
     background-color: var(--expense);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    align-items: center;
   }
 
   #inv {
+    background-color: var(--invest);
+  } 
+
+  .addButton{
+    color: #fff;
     height: 2rem;
+    width: 8rem;
     margin-left: 10px;
     padding: 1rem;
     font-weight: bold;
-    background-color: var(--invest);
-    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
-  } 
+    justify-content: center;
+  }
+
+  #showInputs {
+    background: var(--form-background);
+  }
 
   #listHeader {
-    background: var(--form-background);
     padding: 1rem;
     border-radius: 4px;
     color: var(--text-base);
@@ -176,12 +127,11 @@ body {
   #listHeader h3 {
     margin: 0;
   }
+
   #inputsList {
-    padding: 2rem;
-    background: var(--form-background);
+    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
+    margin: 0;
     height: 50vh;
     overflow: auto;
   }
@@ -191,9 +141,9 @@ body {
   }
 
   #inputsList li p {
-    color: var(--text-base);
+    color: var(--text-title);
+    padding: 0;
   }
-  
 
   .expense {
     color: var(--expense);
@@ -213,11 +163,13 @@ body {
     justify-content: space-between;
   }
 
+
+
+
   #total {
   display: flex;
   gap: 0.5rem;
   }
-
   .resultBox{
     text-align: center;
     width: 100%;
@@ -229,7 +181,6 @@ body {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     font-size: 1rem;
   }
-
   .totalBox {
     display: flex;
     align-items: baseline;
@@ -237,8 +188,10 @@ body {
     justify-content: center;
   }
 
+
+
   #results {
-    padding: 2rem;
+    padding: 4rem;
   }
 
   #resultsButton::before {
@@ -258,7 +211,6 @@ body {
     cursor: pointer;
     transition: 0.2s;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-
   }
 
   #showResults {
@@ -271,7 +223,8 @@ body {
 
   #showResults h3 {
     background: var(--form-background);
-    width: 100%;
+    width: auto;
+    padding: 1rem;
     margin: 2rem 0 0 0;
   }
 
@@ -279,8 +232,12 @@ body {
     background: var(--form-background);
     height: 250px;
     margin: 0;
-    padding: 1rem;
+    padding: 1rem 0rem 1rem 1rem;
     overflow: auto;
+  }
+
+  #showResults ul::-webkit-scrollbar {
+   appearance: none;
   }
 
   #showResults ul li {
@@ -288,8 +245,9 @@ body {
   }
 
   #showResults ul li p {
-    color: var(--text-base);
+    color: var(--text-title);
     font-size: 1rem;
+    font-weight: 100;
   }
   #showResults canvas {
     width: 100%;
